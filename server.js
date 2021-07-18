@@ -28,6 +28,9 @@ fastify.get("/", function (request, reply) {
   reply.view("/src/pages/index.hbs");
 });
 
+fastify.get("/apply", function (request, reply) {
+  reply.view("/src/pages/apply.hbs");
+});
 
 // Run the server and report out to the logs
 fastify.listen(process.env.PORT, function (err, address) {

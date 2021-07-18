@@ -9,6 +9,9 @@
   "keywords": [],
   "author": "Abayomi Oloyinde",
   "license": "ISC",
+  "engines": {
+    "node": "14.16.1"
+  },
   "dependencies": {
     "fastify": "^3.19.1",
     "fastify-formbody": "^5.0.0",
