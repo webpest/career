@@ -1,7 +1,9 @@
-const fastify = require("fastify")({ logger: false });
-const PORT = 3000;
+const path = require("path");
 
-// Setup our static files
+const fastify = require("fastify")({
+  logger: false,
+});
+
 fastify.register(require("fastify-static"), {
   root: path.join(__dirname, "public"),
   prefix: "/", // optional: default '/'
@@ -17,8 +19,18 @@ fastify.register(require("point-of-view"), {
   },
 });
 
+/**
+ * Our home page route
+ *
+ * Returns src/pages/index.hbs with data built into it
+ */
+fastify.get("/", function (request, reply) {
+  reply.view("/src/pages/index.hbs");
+});
+
+
 // Run the server and report out to the logs
-fastify.listen(PORT, function (err, address) {
+fastify.listen(process.env.PORT, function (err, address) {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
